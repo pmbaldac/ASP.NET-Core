@@ -22,7 +22,6 @@ C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\scopedcss\bu
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Front.TagHelpers.input.cache
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Front.TagHelpers.output.cache
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Front.RazorCoreGenerate.cache
-C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
@@ -38,3 +37,6 @@ C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Front.csproj
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Responsable.cshtml.g.cs
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Front.csproj.AssemblyReference.cache
 C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Index.cshtml.g.cs
+C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Auditoria.cshtml.g.cs
+C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\EditarAuditoria.cshtml.g.cs
+C:\Users\pedrob\source\repos\WebApplication3\Front\obj\Debug\net5.0\Razor\Pages\Hallazgo.cshtml.g.cs

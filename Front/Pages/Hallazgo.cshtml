@@ -1,0 +1,93 @@
+﻿@page
+@model Front.Pages.HallazgoModel
+
+<h2>Hallazgo</h2>
+
+<form method="get">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="AuditoriaFiltro">Auditoría:</label>
+            <select id="AuditoriaFiltro" name="AuditoriaFiltro" class="form-control">
+                <option value="">-- Todos --</option>
+                @foreach (var aud in Model.lAuditorias)
+                {
+                <option value="@aud.titulo" selected="@(Model.AuditoriaFiltro == aud.titulo)">
+                    @aud.titulo
+                </option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="TipoFiltro">Tipo:</label>
+            <select id="TipoFiltro" name="TipoFiltro" class="form-control">
+                <option value="">-- Todos --</option>
+                @foreach (var tip in Model.lTipo)
+                {
+                <option value="@tip.tipo" selected="@(Model.TipoFiltro == tip.tipo)">
+                    @tip.tipo
+                </option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="SeveridadFiltro">Severidad:</label>
+            <select id="SeveridadFiltro" name="SeveridadFiltro" class="form-control">
+                <option value="">-- Todos --</option>
+                @foreach (var sev in Model.lSeveridad)
+                {
+                <option value="@sev.severidad" selected="@(Model.SeveridadFiltro == sev.severidad)">
+                    @sev.severidad
+                </option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th style="display:none;">id</>
+            <th>Descripcion</th>
+            <th style="display:none;">idauditoria</th>
+            <th>Titulo</th>
+            <th style="display:none;">idtipo</th>
+            <th>Tipo</th>
+            <th style="display:none;">idseveridad</th>
+            <th>Severidad</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.lHallazgos)
+        {
+        <tr>
+            <td style="display:none;">@item.id</td>
+            <td>@item.descripcion</td>
+            <td style="display:none;">@item.idauditoria</td>
+            <td>@item.titulo</td>
+            <td style="display:none;">@item.idtipo</td>
+            <td>@item.tipo</td>
+            <td style="display:none;">@item.idseveridad</td>
+            <td>@item.severidad</td>
+            <td>@item.fecha.ToString("yyyy-MM-dd")</td>
+            <td>@item.estado</td>
+
+            <td>
+                @if (item.estado == "Pendiente" || item.estado == "En Proceso")
+                {
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.id" style="display:inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

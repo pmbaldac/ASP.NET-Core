@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.36631.11
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIRest", "WebApplication3\APIRest.csproj", "{BE451D00-E95B-49E1-8138-E677751D899D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIRest", "WebApplication3\APIRest.csproj", "{BE451D00-E95B-49E1-8138-E677751D899D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Front", "Front\Front.csproj", "{9A73ACB0-AD6A-4F91-9655-9D860B8E838C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Front", "Front\Front.csproj", "{9A73ACB0-AD6A-4F91-9655-9D860B8E838C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

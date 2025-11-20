@@ -1,0 +1,59 @@
+﻿@page
+@model Front.Pages.AuditoriaModel
+@{
+}
+
+<h2>Crear Auditoria</h2>
+<form method="post">
+
+    <div class="form-group">
+        <label for="Titulo">Título:</label>
+        <input type="text" id="Titulo" name="Titulo" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Area">Área:</label>
+        <select id="Area" name="Area" class="form-control">
+            <option value="">-- Seleccione un área --</option>
+            @foreach (var area in Model.lAreas)
+            {
+                <option value="@area.id">@area.area</option>            
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Responsable">Responsable:</label>
+        <select id="Responsable" name="Responsable" class="form-control">
+            <option value="">-- Seleccione un responsable --</option>
+            @foreach (var resp in Model.lResponsables)
+            {
+                <option value="@resp.id">@resp.nombre</option>            
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="FechaInicio">Fecha inicio:</label>
+        <input type="date" id="FechaInicio" name="FechaInicio" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="FechaFin">Fecha fin:</label>
+        <input type="date" id="FechaFin" name="FechaFin" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Estado">Estado:</label>
+        <select id="Estado" name="Estado" class="form-control">
+            <option value="">-- Seleccione un estado --</option>
+            @foreach (var est in Model.lEstados)
+            {
+                <option value="@est.Id">@est.estado</option>            
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="/Index" class="btn btn-primary ml-2">Listar Auditorias</a>
+</form>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Front
+namespace Front.Request
 {
     public class ResponsableRequest
     {

@@ -1,43 +1,78 @@
 ﻿@page
 @model Front.Pages.IndexModel
 
-<h2>Auditoria</h2>
+<h2>Auditoría</h2>
 
 <form method="get">
     <div class="form-group">
-        <label for="EstadoFiltro">Estado:</label>
-        <select id="EstadoFiltro" name="EstadoFiltro" class="form-control">
+        <label for="ResponsableFiltro">Responsable:</label>
+        <select id="ResponsableFiltro" name="ResponsableFiltro" class="form-control">
             <option value="">-- Todos --</option>
-            @foreach (var est in Model.lEstados)
+            @foreach (var res in Model.lResponsables)
             {
-            <option value="@est.estado" selected="@(Model.EstadoFiltro == est.estado)">
-                @est.estado
-            </option>
+                <option value="@res.nombre" selected="@(Model.ResponsableFiltro == res.nombre)">
+                    @res.nombre
+                </option>
             }
         </select>
     </div>
 
-    <div class="form-group">
-        <label for="FechaInicio">Fecha inicio:</label>
-        <input type="date" id="FechaInicio" name="FechaInicio" value="@(Model.FechaInicio?.ToString(" yyyy-MM-dd"))" class="form-control" />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="AreaFiltro">Area:</label>
+            <select id="AreaFiltro" name="AreaFiltro" class="form-control">
+                <option value="">-- Todos --</option>
+                @foreach (var are in Model.lAreas)
+                {
+                    <option value="@are.area" selected="@(Model.AreaFiltro == are.area)">
+                        @are.area
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="EstadoFiltro">Estado:</label>
+            <select id="EstadoFiltro" name="EstadoFiltro" class="form-control">
+                <option value="">-- Todos --</option>
+                @foreach (var est in Model.lEstados)
+                {
+                    <option value="@est.estado" selected="@(Model.EstadoFiltro == est.estado)">
+                        @est.estado
+                    </option>
+                }
+            </select>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="FechaFin">Fecha fin:</label>
-        <input type="date" id="FechaFin" name="FechaFin" value="@(Model.FechaFin?.ToString(" yyyy-MM-dd"))" class="form-control" />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="FechaInicio">Fecha inicio:</label>
+            <input type="date" id="FechaInicio" name="FechaInicio" value="@(Model.FechaInicio?.ToString(" yyyy-MM-dd"))" class="form-control" />
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="FechaFin">Fecha fin:</label>
+            <input type="date" id="FechaFin" name="FechaFin" value="@(Model.FechaFin?.ToString(" yyyy-MM-dd"))" class="form-control" />
+        </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Filtrar</button>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <a asp-page="/Auditoria" class="btn btn-primary ml-2">Crear Auditoria</a>
 </form>
 
 <table class="table table-striped mt-3">
     <thead>
         <tr>
+            <th style="display:none;">Id</>
             <th>Título</th>
+            <th style="display:none;">IdResponsable</th>
             <th>Responsable</th>
+            <th style="display:none;">IdÁrea</th>
             <th>Área</th>
             <th>Fecha Inicio</th>
             <th>Fecha Fin</th>
+            <th style="display:none;">IdEstado</th>
             <th>Estado</th>
         </tr>
     </thead>
@@ -45,12 +80,32 @@
         @foreach (var item in Model.lAuditorias)
         {
         <tr>
+            <td style="display:none;">@item.id</td>
             <td>@item.titulo</td>
+            <td style="display:none;">@item.idresponsable</td>
             <td>@item.responsable</td>
+            <td style="display:none;">@item.idarea</td>
             <td>@item.area</td>
             <td>@item.fechainicio.ToString("yyyy-MM-dd")</td>
             <td>@(item.fechafin.HasValue ? item.fechafin.Value.ToString("yyyy-MM-dd") : "En curso")</td>
+            <td style="display:none;">@item.idestado</td>
             <td>@item.estado</td>
+            <td>
+                @if (item.estado == "Pendiente" || item.estado == "En Proceso")
+                {
+                <a asp-page="/EditarAuditoria"
+                   asp-route-id="@item.id"
+                   asp-route-titulo="@item.titulo"
+                   asp-route-idarea="@item.idarea"
+                   asp-route-idresponsable="@item.idresponsable"
+                   asp-route-fechainicio="@item.fechainicio.ToString("yyyy-MM-dd")"
+                   asp-route-fechafin="@(item.fechafin.HasValue ? item.fechafin.Value.ToString("yyyy-MM-dd") : "")"
+                   asp-route-idestado="@item.idestado"
+                   class="btn btn-warning btn-sm">
+                    Editar
+                </a>
+                }
+            </td>
         </tr>
         }
     </tbody>

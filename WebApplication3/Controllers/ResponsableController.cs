@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using APIRest.Request;
+using APIRest.Response;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -56,5 +58,48 @@ namespace APIRest.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult GetResponsables()
+        {
+            var responsables = new List<Response.ResponsableResponse>();
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    using (var command = new SqlCommand("SPListResponsable", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                responsables.Add(new ResponsableResponse
+                                {
+                                    id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    nombre = reader.GetString(reader.GetOrdinal("nombre"))
+                                });
+                            }
+                        }
+                    }
+                }
+
+                return Ok(responsables);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Error SQL: " + ex.Message);
+                return StatusCode(500, "Error en la base de datos");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error general: " + ex.Message);
+                return StatusCode(500, "Error inesperado");
+            }
+        }
     }
 }
+
