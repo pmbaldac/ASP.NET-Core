@@ -1,5 +1,4 @@
-﻿using APIRest.Request;
-using APIRest.Response;
+﻿using APIRest.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +23,7 @@ namespace APIRest.Controllers
         }
 
         [HttpPost]
-        public IActionResult InsertResponsable([FromBody] ResponsableRequest request)
+        public IActionResult InsertResponsable([FromBody] Responsable request)
         {
             try
             {
@@ -61,7 +60,7 @@ namespace APIRest.Controllers
         [HttpGet]
         public IActionResult GetResponsables()
         {
-            var responsables = new List<Response.ResponsableResponse>();
+            var responsables = new List<Responsable>();
 
             try
             {
@@ -77,7 +76,7 @@ namespace APIRest.Controllers
                         {
                             while (reader.Read())
                             {
-                                responsables.Add(new ResponsableResponse
+                                responsables.Add(new Responsable
                                 {
                                     id = reader.GetInt32(reader.GetOrdinal("id")),
                                     nombre = reader.GetString(reader.GetOrdinal("nombre"))

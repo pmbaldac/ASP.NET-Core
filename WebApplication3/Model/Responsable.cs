@@ -7,6 +7,7 @@ namespace APIRest.Model
 {
     public class Responsable
     {
+        public int id { get; set; }
         public int idarea { get; set; }
 
         public string nombre { get; set; }

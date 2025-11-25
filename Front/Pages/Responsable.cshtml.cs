@@ -1,5 +1,4 @@
 ﻿using Front.Model;
-using Front.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -37,7 +36,7 @@ namespace Front.Pages
 
         public async Task<IActionResult> OnPost(string Nombre, string Correo, int area)
         {
-            var request = new ResponsableRequest
+            var request = new Responsable
             {
                 nombre = Nombre,
                 correo = Correo,

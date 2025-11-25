@@ -1,5 +1,4 @@
 ﻿using APIRest.Model;
-using APIRest.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -81,7 +80,7 @@ namespace APIRest.Controllers
         }
 
         [HttpPost]
-        public IActionResult InsertAuditoria([FromBody] AuditoriaRequest request)
+        public IActionResult InsertAuditoria([FromBody] Auditoria request)
         {
             try
             {
@@ -125,7 +124,7 @@ namespace APIRest.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateAuditoria([FromBody] AuditoriaRequest request)
+        public IActionResult UpdateAuditoria([FromBody] Auditoria request)
         {
             try
             {

@@ -1,5 +1,4 @@
 using Front.Model;
-using Front.Request;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -63,7 +62,7 @@ namespace Front.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            var request = new AuditoriaRequest
+            var request = new Auditoria
             {
                 idarea = Area,
                 titulo = Titulo,
